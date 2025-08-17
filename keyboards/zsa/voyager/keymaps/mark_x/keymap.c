@@ -11,8 +11,6 @@ enum custom_keycodes {
   ST_MACRO_0,
 };
 
-
-
 #define DUAL_FUNC_0 LT(7, KC_F20)
 #define DUAL_FUNC_1 LT(13, KC_7)
 #define DUAL_FUNC_2 LT(2, KC_T)
@@ -23,39 +21,39 @@ enum custom_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
-    ST_MACRO_0,     KC_BRIGHTNESS_DOWN,KC_BRIGHTNESS_UP,KC_NO,          KC_NO,          KC_NO,                                          KC_NO,          KC_NO,          KC_NO,          KC_AUDIO_VOL_DOWN,KC_AUDIO_VOL_UP,KC_AUDIO_MUTE,  
+    ST_MACRO_0,     KC_BRI_DOWN,KC_BRI_UP,KC_NO,          KC_NO,          KC_NO,                                          KC_NO,          KC_NO,          KC_NO,          KC_VOL_DOWN,KC_VOL_UP,KC_VOL_MUTE,  
     KC_NO,          UK_Q,           UK_W,           UK_F,           UK_P,           UK_B,                                           UK_J,           UK_L,           UK_U,           UK_Y,           UK_QUOT,        KC_NO,          
     TG(4),          UK_A,           MT(MOD_LALT, UK_R),MT(MOD_RCTL, UK_S),MT(MOD_RSFT, UK_T),UK_G,                                           UK_M,           MT(MOD_LSFT, UK_N),MT(MOD_RCTL, UK_E),MT(MOD_LALT, UK_I),UK_O,           KC_NO,          
     KC_LEFT_CTRL,   UK_Z,           UK_X,           UK_C,           UK_D,           UK_V,                                           UK_K,           UK_H,           UK_COMM,        UK_DOT,         UK_SLSH,        KC_NO,          
                                                     OSL(1),         TT(3),                                          OSL(2),         KC_SPACE
   ),
   [1] = LAYOUT_voyager(
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_TRANSPARENT, LSFT(UK_Q),     LSFT(UK_W),     LSFT(UK_F),     LSFT(UK_P),     LSFT(UK_B),                                     LSFT(UK_J),     LSFT(UK_L),     LSFT(UK_U),     LSFT(UK_Y),     UK_DQUO,        KC_TRANSPARENT, 
-    KC_TRANSPARENT, LSFT(UK_A),     DUAL_FUNC_0,    DUAL_FUNC_1,    LSFT(UK_T),     LSFT(UK_G),                                     LSFT(UK_M),     LSFT(UK_N),     DUAL_FUNC_2,    DUAL_FUNC_3,    LSFT(UK_O),     KC_TRANSPARENT, 
-    KC_TRANSPARENT, LSFT(UK_Z),     LSFT(UK_X),     LSFT(UK_C),     LSFT(UK_D),     LSFT(UK_V),                                     LSFT(UK_K),     LSFT(UK_H),     UK_MINS,        UK_QUES,        UK_EXLM,        TO(0),          
+    TRA, TRA, TRA, TRA, TRA, TRA,                                 TRA, TRA, TRA, TRA, TRA, TRA, 
+    TRA, LSFT(UK_Q),     LSFT(UK_W),     LSFT(UK_F),     LSFT(UK_P),     LSFT(UK_B),                                     LSFT(UK_J),     LSFT(UK_L),     LSFT(UK_U),     LSFT(UK_Y),     UK_DQUO,        TRA, 
+    TRA, LSFT(UK_A),     DUAL_FUNC_0,    DUAL_FUNC_1,    LSFT(UK_T),     LSFT(UK_G),                                     LSFT(UK_M),     LSFT(UK_N),     DUAL_FUNC_2,    DUAL_FUNC_3,    LSFT(UK_O),     TRA, 
+    TRA, LSFT(UK_Z),     LSFT(UK_X),     LSFT(UK_C),     LSFT(UK_D),     LSFT(UK_V),                                     LSFT(UK_K),     LSFT(UK_H),     UK_MINS,        UK_QUES,        UK_EXLM,        TO(0),          
                                                     TO(0),          CW_TOGG,                                        CW_TOGG,        KC_TAB
   ),
   [2] = LAYOUT_voyager(
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_TRANSPARENT, UK_PIPE,        UK_LABK,        UK_EQL,         UK_RABK,        UK_AMPR,                                        UK_CIRC,        UK_LPRN,        KC_TRANSPARENT, UK_RPRN,        UK_DQUO,        KC_TRANSPARENT, 
-    KC_TRANSPARENT, UK_SCLN,        UK_GRV,         KC_LEFT_ALT,    LALT(KC_TAB),   UK_AT,                                          UK_BSLS,        DUAL_FUNC_4,    DUAL_FUNC_5,    DUAL_FUNC_6,    UK_RCBR,        KC_TRANSPARENT, 
-    KC_TRANSPARENT, UK_UNDS,        KC_LEFT_SHIFT,  KC_RIGHT_CTRL,  KC_TAB,         UK_HASH,                                        KC_TRANSPARENT, UK_LBRC,        KC_TRANSPARENT, UK_RBRC,        UK_TILD,        TO(0),          
-                                                    KC_TRANSPARENT, KC_TRANSPARENT,                                 TO(0),          KC_TAB
+    TRA, TRA, TRA, TRA, TRA, TRA,                                 TRA, TRA, TRA, TRA, TRA, TRA, 
+    TRA, UK_PIPE,        UK_LABK,        UK_EQL,         UK_RABK,        UK_AMPR,                                        UK_CIRC,        UK_LPRN,        TRA, UK_RPRN,        UK_DQUO,        TRA, 
+    TRA, UK_SCLN,        UK_GRV,         KC_LEFT_ALT,    LALT(KC_TAB),   UK_AT,                                          UK_BSLS,        DUAL_FUNC_4,    DUAL_FUNC_5,    DUAL_FUNC_6,    UK_RCBR,        TRA, 
+    TRA, UK_UNDS,        KC_LEFT_SHIFT,  KC_RIGHT_CTRL,  KC_TAB,         UK_HASH,                                        TRA, UK_LBRC,        TRA, UK_RBRC,        UK_TILD,        TO(0),          
+                                                    TRA, TRA,                                 TO(0),          KC_TAB
   ),
   [3] = LAYOUT_voyager(
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_TRANSPARENT, UK_SLSH,        UK_4,           UK_5,           UK_6,           UK_PND,                                         KC_PAGE_UP,     KC_HOME,        KC_BSPC,        KC_END,         KC_DELETE,      KC_TRANSPARENT, 
-    KC_TRANSPARENT, UK_0,           UK_1,           UK_2,           UK_3,           UK_PERC,                                        KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       KC_ENTER,       KC_TRANSPARENT, 
-    KC_TRANSPARENT, UK_ASTR,        UK_7,           UK_8,           UK_9,           UK_DLR,                                         KC_PGDN,        RCTL(KC_LEFT),  RCTL(KC_BSPC),  RCTL(KC_RIGHT), RCTL(KC_ENTER), TO(0),          
-                                                    KC_LEFT_SHIFT,  TO(0),                                          KC_TRANSPARENT, KC_ESCAPE
+    TRA, TRA, TRA, TRA, TRA, TRA,                                 TRA, TRA, TRA, TRA, TRA, TRA, 
+    TRA, UK_SLSH,        UK_4,           UK_5,           UK_6,           UK_PND,                                         KC_PAGE_UP,     KC_HOME,        KC_BSPC,        KC_END,         KC_DELETE,      TRA, 
+    TRA, UK_0,           UK_1,           UK_2,           UK_3,           UK_PERC,                                        KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       KC_ENTER,       TRA, 
+    TRA, UK_ASTR,        UK_7,           UK_8,           UK_9,           UK_DLR,                                         KC_PGDN,        RCTL(KC_LEFT),  RCTL(KC_BSPC),  RCTL(KC_RIGHT), RCTL(KC_ENTER), TO(0),          
+                                                    KC_LEFT_SHIFT,  TO(0),                                          TRA, KC_ESCAPE
   ),
   [4] = LAYOUT_voyager(
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_TRANSPARENT, RCTL(UK_X),     LGUI(LSFT(UK_S)),KC_BSPC,        KC_ENTER,       RCTL(UK_A),                                     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_TRANSPARENT, KC_LEFT_GUI,    KC_ESCAPE,      KC_LEFT_ALT,    LALT(KC_TAB),   RCTL(UK_C),                                     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_TRANSPARENT, KC_DELETE,      KC_LEFT_SHIFT,  KC_RIGHT_CTRL,  KC_TAB,         RCTL(UK_V),                                     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, TO(0),          
-                                                    KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
+    TRA, TRA, TRA, TRA, TRA, TRA,                                 TRA, TRA, TRA, TRA, TRA, TRA, 
+    TRA, RCTL(UK_X),     LGUI(LSFT(UK_S)),KC_BSPC,        KC_ENTER,       RCTL(UK_A),                                     TRA, TRA, TRA, TRA, TRA, TRA, 
+    TRA, KC_LEFT_GUI,    KC_ESCAPE,      KC_LEFT_ALT,    LALT(KC_TAB),   RCTL(UK_C),                                     TRA, TRA, TRA, TRA, TRA, TRA, 
+    TRA, KC_DELETE,      KC_LEFT_SHIFT,  KC_RIGHT_CTRL,  KC_TAB,         RCTL(UK_V),                                     TRA, TRA, TRA, TRA, TRA, TO(0),          
+                                                    TRA, TRA,                                 TRA, TRA
   ),
 };
 
