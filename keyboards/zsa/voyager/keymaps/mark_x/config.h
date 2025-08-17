@@ -1,0 +1,9 @@
+#define CHORDAL_HOLD
+#define QUICK_TAP_TERM 0
+
+#define USB_SUSPEND_WAKEUP_DELAY 0
+#define SERIAL_NUMBER "OQBly/gaOnAq"
+#define LAYER_STATE_16BIT
+
+#define RGB_MATRIX_STARTUP_SPD 60
+
