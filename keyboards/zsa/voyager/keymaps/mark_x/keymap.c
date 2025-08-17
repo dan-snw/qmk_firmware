@@ -112,9 +112,6 @@ void set_layer_color(int layer) {
 }
 
 bool rgb_matrix_indicators_user(void) {
-  if (rawhid_state.rgb_control) {
-      return false;
-  }
   if (!keyboard_config.disable_layer_led) { 
     switch (biton32(layer_state)) {
       case 0:
