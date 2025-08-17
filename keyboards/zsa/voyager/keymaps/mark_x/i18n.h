@@ -1,3 +1,5 @@
+#define TRA KC_TRANSPARENT
+
 #define UK_Q KC_Q
 #define UK_W KC_W
 #define UK_F KC_F
