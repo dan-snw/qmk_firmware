@@ -1,0 +1,12 @@
+#define CHORDAL_HOLD
+#undef TAPPING_TERM
+#define TAPPING_TERM 201
+
+#define QUICK_TAP_TERM 0
+
+#define USB_SUSPEND_WAKEUP_DELAY 0
+#define SERIAL_NUMBER "vbmpK/ga9Ad3"
+#define LAYER_STATE_8BIT
+
+#define RGB_MATRIX_STARTUP_SPD 60
+
