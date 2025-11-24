@@ -11,14 +11,11 @@ enum custom_keycodes {
   ST_MACRO_0,
 };
 
-
-
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
     RCTL(KC_L),     BRI_DOWN,       BRI_UP,               KC_NO,              KC_NO,              KC_NO,                          KC_NO,          KC_NO,              KC_NO,    KC_AUDIO_VOL_DOWN,    KC_AUDIO_VOL_UP, KC_AUDIO_MUTE,
     OSM(MOD_LGUI),  KC_Q,           KC_W,                 KC_F,               KC_P,               KC_B,                           KC_J,           LT(4, KC_L),        KC_U,     KC_Y,                 KC_QUOTE,        KC_NO,
-    OSM(MOD_RCTL),  KC_A,           KC_R,                 LT(3, KC_S),        HYPR_T(KC_T),       KC_G,                           KC_M,           KC_N,               KC_E,     KC_I,                 KC_O,            KC_NO,
+    OSM(MOD_RCTL),  KC_A,           KC_R,                 LT(3, KC_S),        HYPR_T(KC_T),       KC_G,                           KC_M,           HYPR_T(KC_N),       KC_E,     KC_I,                 KC_O,            KC_NO,
     TT(4),          KC_Z,           MT(MOD_LGUI, KC_X),   MT(MOD_LALT, KC_C), MT(MOD_RCTL, KC_D), KC_V,                           KC_K,           MT(MOD_RCTL, KC_H), OSL(1),   MT(MOD_LGUI, KC_DOT), KC_SLASH,        KC_NO,
                                                                               MO(2),              OSM(MOD_LSFT),                  OSM(MOD_LSFT),  KC_SPACE
   ),
