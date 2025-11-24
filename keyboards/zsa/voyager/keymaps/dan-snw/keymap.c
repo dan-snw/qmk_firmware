@@ -35,9 +35,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [3] = LAYOUT_voyager(
     TRA,            TRA,            TRA,                  TRA,                TRA,                TRA,                            TRA,            TRA,                TRA,        TRA,                TRA,             TRA,  
-    TRA,            TRA,            TRA,                  TRA,                TRA,                TRA,                            UK_PND,         KC_DQUO,            KC_4,       KC_5,               KC_6,            TRA,  
-    TRA,            TRA,            TRA,                  TRA,                TRA,                TRA,                            KC_DLR,         KC_0,               KC_1,       KC_2,               KC_3,            TRA,  
-    TRA,            TRA,            TRA,                  TRA,                TRA,                TRA,                            KC_PERC,        KC_PLUS,            KC_7,       KC_8,               KC_9,            TRA,  
+    TRA,            TRA,            TRA,                  TRA,                TRA,                TRA,                            UK_PND,         KC_4,               KC_5,       KC_6,               KC_DQUO,         TRA,  
+    TRA,            TRA,            TRA,                  TRA,                TRA,                TRA,                            KC_DLR,         KC_1,               KC_2,       KC_3,               KC_0,            TRA,  
+    TRA,            TRA,            TRA,                  TRA,                TRA,                TRA,                            KC_PERC,        KC_7,               KC_8,       KC_9,               KC_PLUS,         TRA,  
                                                                               TRA,                TRA,                            TRA,            TRA
   ),
   [4] = LAYOUT_voyager(
