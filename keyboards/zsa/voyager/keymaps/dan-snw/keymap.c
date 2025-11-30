@@ -17,7 +17,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     OSM(MOD_LGUI),  KC_Q,           KC_W,                 KC_F,               KC_P,               KC_B,                           KC_J,           LT(4, KC_L),        KC_U,     KC_Y,                 KC_QUOTE,        KC_NO,
     OSM(MOD_RCTL),  KC_A,           KC_R,                 LT(3, KC_S),        HYPR_T(KC_T),       KC_G,                           KC_M,           HYPR_T(KC_N),       KC_E,     KC_I,                 KC_O,            KC_NO,
     TT(4),          KC_Z,           MT(MOD_LGUI, KC_X),   MT(MOD_LALT, KC_C), MT(MOD_RCTL, KC_D), KC_V,                           KC_K,           MT(MOD_RCTL, KC_H), OSL(1),   MT(MOD_LGUI, KC_DOT), KC_SLASH,        KC_NO,
-                                                                              MO(2),              OSM(MOD_LSFT),                  OSM(MOD_LSFT),  KC_SPACE
+                                                                              OSL(2),             OSM(MOD_LSFT),                  OSM(MOD_LSFT),  KC_SPACE
   ),
   [1] = LAYOUT_voyager(
     TRA,            TRA,            TRA,                  TRA,                TRA,                TRA,                            TRA,            TRA,                TRA,      TRA,                  TRA,             TRA,  
@@ -30,8 +30,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TRA,            TRA,            TRA,                  TRA,                TRA,                TRA,                            TRA,            TRA,                TRA,       TRA,                 TRA,             TRA,  
     TRA,            TRA,            KC_4,                 KC_5,               KC_6,               TRA,                            LGUI(KC_LEFT),  LALT(KC_LEFT),      KC_BSPC,   LALT(KC_RIGHT),      LGUI(KC_RIGHT),  TRA,  
     TRA,            KC_0,           KC_1,                 KC_2,               KC_3,               KC_LEFT_SHIFT,                  KC_LEFT,        KC_DOWN,            KC_UP,     KC_RIGHT,            KC_ENTER,        TRA,  
-    TRA,            TRA,            KC_7,                 KC_8,               KC_9,               TRA,                            LALT(KC_BSPC),  KC_TAB,             KC_LEFT_ALT,KC_LEFT_GUI,        RCTL(KC_ENTER),  TRA,  
-                                                                              TRA,                TRA,                            RCTL(KC_TAB),   KC_ESCAPE
+    TRA,            TRA,            KC_7,                 KC_8,               KC_9,               TRA,                            LALT(KC_BSPC),  KC_TAB,             KC_ESCAPE, KC_LEFT_GUI,        RCTL(KC_ENTER),  TRA,  
+                                                                              TRA,                TRA,                            RCTL(KC_TAB),   KC_SPACE
   ),
   [3] = LAYOUT_voyager(
     TRA,            TRA,            TRA,                  TRA,                TRA,                TRA,                            TRA,            TRA,                TRA,        TRA,                TRA,             TRA,  
@@ -133,23 +133,42 @@ bool rgb_matrix_indicators_user(void) {
   return true;
 }
 
-
-
-
-
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  switch (keycode) {
-    case ST_MACRO_0:
-    if (record->event.pressed) {
-      SEND_STRING(SS_TAP(X_COMMA)SS_DELAY(1)  SS_TAP(X_SPACE));
-    }
-    break;
 
-    case RGB_SLD:
-      if (record->event.pressed) {
-        rgblight_mode(1);
-      }
-      return false;
-  }
-  return true;
+    switch (keycode) {
+        case ST_MACRO_0:
+            if (record->event.pressed) {
+                SEND_STRING(SS_TAP(X_COMMA) SS_DELAY(1) SS_TAP(X_SPACE));
+            }
+            break;
+
+        case RGB_SLD:
+            if (record->event.pressed) {
+                rgblight_mode(1);
+            }
+            return false;
+    }
+
+    if (record->event.pressed) {
+        // Do not cancel OSL for numbers
+        switch (keycode) {
+            case KC_0:
+            case KC_1:
+            case KC_2:
+            case KC_3:
+            case KC_4:
+            case KC_5:
+            case KC_6:
+            case KC_7:
+            case KC_8:
+            case KC_9:
+                return true;
+        }
+
+        if (get_oneshot_layer() != 0) {
+            clear_oneshot_layer_state(ONESHOT_OTHER_KEY_PRESSED);
+        }
+    }
+
+    return true;
 }
