@@ -9,6 +9,7 @@
 enum custom_keycodes {
   RGB_SLD = ZSA_SAFE_RANGE,
   ST_MACRO_0,
+  OSL2_STICKY,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -17,7 +18,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     OSM(MOD_LGUI),  KC_Q,           KC_W,                 KC_F,               KC_P,               KC_B,                           KC_J,           LT(4, KC_L),        KC_U,     KC_Y,                 KC_QUOTE,        KC_NO,
     OSM(MOD_RCTL),  KC_A,           KC_R,                 LT(3, KC_S),        HYPR_T(KC_T),       KC_G,                           KC_M,           HYPR_T(KC_N),       KC_E,     KC_I,                 KC_O,            KC_NO,
     TT(4),          KC_Z,           MT(MOD_LGUI, KC_X),   MT(MOD_LALT, KC_C), MT(MOD_RCTL, KC_D), KC_V,                           KC_K,           MT(MOD_RCTL, KC_H), OSL(1),   MT(MOD_LGUI, KC_DOT), KC_SLASH,        KC_NO,
-                                                                              OSL(2),             OSM(MOD_LSFT),                  OSM(MOD_LSFT),  KC_SPACE
+                                                                              OSL2_STICKY,        OSM(MOD_LSFT),                  OSM(MOD_LSFT),  KC_SPACE
   ),
   [1] = LAYOUT_voyager(
     TRA,            TRA,            TRA,                  TRA,                TRA,                TRA,                            TRA,            TRA,                TRA,      TRA,                  TRA,             TRA,  
@@ -133,6 +134,11 @@ bool rgb_matrix_indicators_user(void) {
   return true;
 }
 
+static bool osl2_clear_on_release = false;
+static bool layer2_sticky_active = false;
+static bool osl2_held = false;
+static uint16_t osl2_press_timer = 0;
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     switch (keycode) {
@@ -147,28 +153,69 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 rgblight_mode(1);
             }
             return false;
+
+        case OSL2_STICKY:
+          if (record->event.pressed) {
+            // On press: always turn Layer 2 on and mark held
+            osl2_held = true;
+            osl2_press_timer = timer_read();
+            layer_on(2);
+          }
+          else {
+            // On release: decide tap vs hold by time
+            osl2_held = false;
+            uint16_t elapsed = timer_elapsed(osl2_press_timer);
+            if (elapsed < TAPPING_TERM) {
+              // Tap: toggle sticky
+              if (layer2_sticky_active) {
+                layer2_sticky_active = false;
+                layer_off(2);
+              } else {
+                layer2_sticky_active = true;
+                // Keep layer 2 on (already on from press)
+              }
+            } else {
+              // Hold: if not sticky, turn layer off on release
+              if (!layer2_sticky_active) {
+                layer_off(2);
+              }
+            }
+          }
+          return false;
     }
 
-    if (record->event.pressed) {
-        // Do not cancel OSL for numbers
-        switch (keycode) {
-            case KC_0:
-            case KC_1:
-            case KC_2:
-            case KC_3:
-            case KC_4:
-            case KC_5:
-            case KC_6:
-            case KC_7:
-            case KC_8:
-            case KC_9:
-                return true;
-        }
-
-        if (get_oneshot_layer() != 0) {
-            clear_oneshot_layer_state(ONESHOT_OTHER_KEY_PRESSED);
-        }
+  if (record->event.pressed) {
+    // If our sticky Layer 2 is active, keep it for digits; clear for others on release
+    if (layer2_sticky_active) {
+      switch (keycode) {
+        case KC_0:
+        case KC_1:
+        case KC_2:
+        case KC_3:
+        case KC_4:
+        case KC_5:
+        case KC_6:
+        case KC_7:
+        case KC_8:
+        case KC_9:
+          // Keep layer 2 active for digits
+          break;
+        default:
+          // Non-digit: clear layer 2 after this key is released
+          osl2_clear_on_release = true;
+          break;
+      }
     }
+  }
+
+  // On release, if marked, clear sticky layer 2
+  if (!record->event.pressed) {
+    if (osl2_clear_on_release) {
+      osl2_clear_on_release = false;
+      layer2_sticky_active = false;
+      layer_off(2);
+    }
+  }
 
     return true;
 }
