@@ -31,8 +31,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TRA,            TRA,            TRA,                  TRA,                TRA,                TRA,                            TRA,            TRA,                TRA,       TRA,                 TRA,             TRA,  
     TRA,            UK_PND,         KC_4,                 KC_5,               KC_6,               KC_DLR,                         LGUI(KC_LEFT),  LALT(KC_LEFT),      KC_BSPC,   LALT(KC_RIGHT),      LGUI(KC_RIGHT),  TRA,     
     TRA,            KC_0,           KC_1,                 KC_2,               KC_3,               KC_LEFT_SHIFT,                  KC_LEFT,        KC_DOWN,            KC_UP,     KC_RIGHT,            KC_ENTER,        TRA,  
-    TRA,            TRA,            KC_7,                 KC_8,               KC_9,               KC_PERC,                        LALT(KC_BSPC),  KC_TAB,             KC_ESCAPE, KC_LEFT_GUI,        RCTL(KC_ENTER),  TRA,  
-                                                                              TRA,                TRA,                            RCTL(KC_TAB),   KC_SPACE
+    TRA,            TRA,            KC_7,                 KC_8,               KC_9,               KC_PERC,                        LALT(KC_BSPC),  KC_TAB,             KC_SPACE,  KC_LEFT_GUI,        RCTL(KC_ENTER),  TRA,  
+                                                                              TRA,                TRA,                            RCTL(KC_TAB),   KC_ESCAPE
   ),
   [3] = LAYOUT_voyager(
     TRA,            TRA,            TRA,                  TRA,                TRA,                TRA,                            TRA,            TRA,                TRA,        TRA,                TRA,             TRA,  
