@@ -14,31 +14,31 @@ enum custom_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
-    RCTL(KC_L),     BRI_DOWN,       BRI_UP,               KC_NO,              KC_NO,              KC_NO,                          KC_NO,          KC_NO,              KC_NO,    KC_AUDIO_VOL_DOWN,    KC_AUDIO_VOL_UP, KC_AUDIO_MUTE,
-    OSM(MOD_LGUI),  KC_Q,           KC_W,                 KC_F,               KC_P,               KC_B,                           KC_J,           LT(3, KC_L),        KC_U,     KC_Y,                 KC_QUOTE,        KC_NO,
-    OSM(MOD_RCTL),  KC_A,           KC_R,                 KC_S,               HYPR_T(KC_T),       KC_G,                           KC_M,           HYPR_T(KC_N),       KC_E,     KC_I,                 KC_O,            KC_NO,
-    TT(3),          KC_Z,           MT(MOD_LGUI, KC_X),   MT(MOD_LALT, KC_C), MT(MOD_RCTL, KC_D), KC_V,                           KC_K,           MT(MOD_RCTL, KC_H), OSL(1),   MT(MOD_LGUI, KC_DOT), KC_SLASH,        KC_NO,
+    RCTL(KC_L),     BRI_DOWN,       BRI_UP,               KC_NO,              KC_NO,              KC_NO,                          KC_NO,          KC_NO,              KC_NO,       KC_AUDIO_VOL_DOWN,    KC_AUDIO_VOL_UP, KC_AUDIO_MUTE,
+    OSM(MOD_LGUI),  KC_Q,           KC_W,                 KC_F,               KC_P,               KC_B,                           KC_J,           LT(3, KC_L),        KC_U,        KC_Y,                 KC_QUOTE,        KC_NO,
+    OSM(MOD_RCTL),  KC_A,           KC_R,                 KC_S,               HYPR_T(KC_T),       KC_G,                           KC_M,           HYPR_T(KC_N),       KC_E,        KC_I,                 KC_O,            KC_NO,
+    TT(3),          KC_Z,           MT(MOD_LGUI, KC_X),   MT(MOD_LALT, KC_C), MT(MOD_RCTL, KC_D), KC_V,                           KC_K,           MT(MOD_RCTL, KC_H), OSL(1),      MT(MOD_LGUI, KC_DOT), KC_SLASH,        KC_NO,
                                                                               OSL2_STICKY,        OSM(MOD_LSFT),                  OSM(MOD_LSFT),  KC_SPACE
   ),
   [1] = LAYOUT_voyager(
-    TRA,            TRA,            TRA,                  TRA,                TRA,                TRA,                            TRA,            TRA,                TRA,      TRA,                  TRA,             TRA,  
-    TRA,            KC_PIPE,        KC_LABK,              KC_EQUAL,           KC_RABK,            KC_AMPR,                        KC_CIRC,        KC_RCBR,            KC_RPRN,  KC_RBRC,              KC_BSLS,         TRA,  
-    TRA,            KC_SCLN,        KC_COLN,              KC_QUES,            KC_EXLM,            KC_UNDS,                        TRA,            KC_LCBR,            KC_LPRN,  KC_LBRC,              RCTL(KC_RBRC),   TRA,  
-    TRA,            LALT(KC_3),     KC_AT,                KC_MINUS,           KC_GRAVE,           KC_PLUS,                        KC_ASTR,        TRA,                KC_COMMA, TRA,                  KC_TILD,         TRA,  
+    TRA,            TRA,            TRA,                  TRA,                TRA,                TRA,                            TRA,            TRA,                TRA,         TRA,                  TRA,             TRA,  
+    TRA,            KC_PIPE,        KC_LABK,              KC_EQUAL,           KC_RABK,            KC_AMPR,                        KC_CIRC,        KC_RCBR,            KC_RPRN,     KC_RBRC,              KC_BSLS,         TRA,  
+    TRA,            KC_SCLN,        KC_COLN,              KC_QUES,            KC_EXLM,            KC_UNDS,                        TRA,            KC_LCBR,            KC_LPRN,     KC_LBRC,              RCTL(KC_RBRC),   TRA,  
+    TRA,            LALT(KC_3),     KC_AT,                KC_MINUS,           KC_GRAVE,           KC_PLUS,                        KC_ASTR,        TRA,                KC_COMMA,    TRA,                  KC_TILD,         TRA,  
                                                                               RCTL(KC_SPACE),     OSM(MOD_LGUI),                  OSM(MOD_RCTL),  ST_MACRO_0
   ),
   [2] = LAYOUT_voyager(
-    TRA,            TRA,            TRA,                  TRA,                TRA,                TRA,                            TRA,            TRA,                TRA,       TRA,                 TRA,             TRA,  
-    TRA,            UK_PND,         KC_4,                 KC_5,               KC_6,               KC_DLR,                         LGUI(KC_LEFT),  LALT(KC_LEFT),      KC_BSPC,   LALT(KC_RIGHT),      LGUI(KC_RIGHT),  TRA,     
-    TRA,            KC_0,           KC_1,                 KC_2,               KC_3,               KC_LEFT_SHIFT,                  KC_LEFT,        KC_DOWN,            KC_UP,     KC_RIGHT,            KC_ENTER,        TRA,  
-    TRA,            TRA,            KC_7,                 KC_8,               KC_9,               KC_PERC,                        LALT(KC_BSPC),  KC_TAB,             KC_SPACE,  KC_LEFT_GUI,        RCTL(KC_ENTER),  TRA,  
-                                                                              TRA,                TRA,                            RCTL(KC_TAB),   KC_ESCAPE
+    TRA,            TRA,            TRA,                  TRA,                TRA,                TRA,                            TRA,            TRA,                TRA,          TRA,                 TRA,             TRA,  
+    TRA,            UK_PND,         KC_4,                 KC_5,               KC_6,               KC_DLR,                         LGUI(KC_LEFT),  LALT(KC_LEFT),      KC_BSPC,      LALT(KC_RIGHT),      LGUI(KC_RIGHT),  TRA,     
+    TRA,            KC_0,           KC_1,                 KC_2,               KC_3,               KC_LEFT_SHIFT,                  KC_LEFT,        KC_DOWN,            KC_UP,        KC_RIGHT,            KC_ENTER,        TRA,  
+    TRA,            TRA,            KC_7,                 KC_8,               KC_9,               KC_PERC,                        LALT(KC_BSPC),  KC_TAB,             RCTL(KC_TAB), KC_LEFT_GUI,         RCTL(KC_ENTER),  TRA,  
+                                                                              TRA,                TRA,                            KC_NO,          KC_ESCAPE
   ),
   [3] = LAYOUT_voyager(
-    TRA,            TRA,            TRA,                  TRA,                TRA,                TRA,                            TRA,            TRA,                TRA,        TRA,                TRA,             TRA,  
-    TRA,            RCTL(KC_X),     LGUI(LSFT(RCTL(KC_4))),KC_BSPC,           KC_ENTER,           RCTL(KC_A),                     TRA,            TRA,                TRA,        TRA,                TRA,             TRA,  
-    TRA,            KC_LEFT_GUI,    KC_ESCAPE,            KC_LEFT_ALT,        MT(MOD_LSFT, KC_TAB),RCTL(KC_C),                    TRA,            TRA,                TRA,        TRA,                TRA,             TRA,  
-    TRA,            KC_DELETE,      KC_LEFT_SHIFT,        KC_LEFT_GUI,        LGUI(KC_TAB),       KC_V,                           TRA,            TRA,                TRA,        TRA,                TRA,             TRA,  
+    TRA,            TRA,            TRA,                  TRA,                TRA,                TRA,                            TRA,            TRA,                TRA,           TRA,                TRA,             TRA,  
+    TRA,            RCTL(KC_X),     LGUI(LSFT(RCTL(KC_4))),KC_BSPC,           KC_ENTER,           RCTL(KC_A),                     TRA,            TRA,                TRA,           TRA,                TRA,             TRA,  
+    TRA,            KC_LEFT_GUI,    KC_ESCAPE,            KC_LEFT_ALT,        MT(MOD_LSFT, KC_TAB),RCTL(KC_C),                    TRA,            TRA,                TRA,           TRA,                TRA,             TRA,  
+    TRA,            KC_DELETE,      KC_LEFT_SHIFT,        KC_LEFT_GUI,        LGUI(KC_TAB),       KC_V,                           TRA,            TRA,                TRA,           TRA,                TRA,             TRA,  
                                                                               TRA,                TRA,                            TRA,            TRA
   ),
 };
