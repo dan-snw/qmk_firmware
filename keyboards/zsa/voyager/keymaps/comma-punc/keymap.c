@@ -10,6 +10,7 @@ enum custom_keycodes {
   RGB_SLD = ZSA_SAFE_RANGE,
   ST_MACRO_0,
   OSL2_STICKY,
+  MY_LT2,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -18,7 +19,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ENTER,       KC_Q,           KC_W,                 KC_F,               KC_P,               KC_B,                           KC_J,           LT(3, KC_L),        KC_U,        KC_Y,                 KC_QUOTE,        KC_NO,
     OSM(MOD_RCTL),  KC_A,           KC_R,                 KC_S,               HYPR_T(KC_T),       KC_G,                           KC_M,           HYPR_T(KC_N),       KC_E,        KC_I,                 KC_O,            KC_NO,
     TT(3),          KC_Z,           MT(MOD_LGUI, KC_X),   MT(MOD_LALT, KC_C), MT(MOD_RCTL, KC_D), KC_V,                           KC_K,           MT(MOD_RCTL, KC_H), OSL(1),      MT(MOD_LGUI, KC_DOT), KC_SLASH,        KC_NO,
-                                                                              MO(2),              OSM(MOD_LSFT),                  OSM(MOD_LSFT),  KC_SPACE
+                                                                              MY_LT2,             OSM(MOD_LSFT),                  OSM(MOD_LSFT),  MY_LT2
 
   ),
   [1] = LAYOUT_voyager(
@@ -33,7 +34,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TRA,            KC_COMMA,       KC_4,                 KC_5,               KC_6,               UK_PND,                         LGUI(KC_LEFT),  LALT(KC_LEFT),      KC_BSPC,      LALT(KC_RIGHT),      LGUI(KC_RIGHT),  TRA,     
     TRA,            KC_0,           MT(MOD_LGUI, KC_1),   MT(MOD_LSFT, KC_2), MT(MOD_RCTL, KC_3), KC_DLR,                         KC_LEFT,        KC_DOWN,            KC_UP,        KC_RIGHT,            KC_ENTER,        TRA,  
     TRA,            KC_DOT,         KC_7,                 KC_8,               KC_9,               KC_PERC,                        LALT(KC_BSPC),  KC_TAB,             RCTL(KC_TAB), KC_LEFT_GUI,         RCTL(KC_ENTER),  TRA,  
-                                                                              TRA,                KC_LEFT_SHIFT,                  KC_ESCAPE,      MT(MOD_LALT, KC_SPACE)    
+                                                                              MY_LT2,             KC_LEFT_SHIFT,                  KC_ESCAPE,      MY_LT2    
   ),
   [3] = LAYOUT_voyager(
     TRA,            TRA,            TRA,                  TRA,                TRA,                TRA,                            TRA,            TRA,                TRA,           TRA,                TRA,             TRA,  
@@ -132,6 +133,9 @@ static bool osl2_clear_on_release = false;
 static bool layer2_sticky_active = false;
 static bool osl2_held = false;
 static uint16_t osl2_press_timer = 0;
+static uint8_t lt2_count = 0;
+static bool lt2_tapping = false;
+static uint16_t lt2_tap_timer = 0;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
@@ -145,6 +149,30 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case RGB_SLD:
             if (record->event.pressed) {
                 rgblight_mode(1);
+            }
+            return false;
+
+        case MY_LT2:
+            if (record->event.pressed) {
+                if (lt2_count == 0) {
+                    // First thumb down — could still be a tap
+                    lt2_tapping = true;
+                    lt2_tap_timer = timer_read();
+                } else {
+                    // Second thumb pressed while first held — handoff, not a tap
+                    lt2_tapping = false;
+                }
+                lt2_count++;
+                layer_on(2);
+            } else {
+                lt2_count--;
+                if (lt2_count == 0) {
+                    layer_off(2);
+                    if (lt2_tapping && timer_elapsed(lt2_tap_timer) < TAPPING_TERM) {
+                        tap_code(KC_SPACE);
+                    }
+                    lt2_tapping = false;
+                }
             }
             return false;
 
@@ -177,6 +205,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           }
           return false;
     }
+
+  if (record->event.pressed && lt2_count > 0) {
+    lt2_tapping = false;
+  }
 
   if (record->event.pressed) {
     // If our sticky Layer 2 is active, keep it for digits; clear for others on release
