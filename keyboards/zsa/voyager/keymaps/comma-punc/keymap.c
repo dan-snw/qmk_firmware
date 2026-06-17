@@ -19,7 +19,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ENTER,       KC_Q,           KC_W,                 KC_F,               KC_P,               KC_B,                           KC_J,           LT(3, KC_L),        KC_U,        KC_Y,                 KC_QUOTE,        KC_NO,
     OSM(MOD_RCTL),  KC_A,           KC_R,                 KC_S,               HYPR_T(KC_T),       KC_G,                           KC_M,           HYPR_T(KC_N),       KC_E,        KC_I,                 KC_O,            KC_NO,
     TT(3),          KC_Z,           MT(MOD_LGUI, KC_X),   MT(MOD_LALT, KC_C), MT(MOD_RCTL, KC_D), KC_V,                           KC_K,           MT(MOD_RCTL, KC_H), OSL(1),      MT(MOD_LGUI, KC_DOT), KC_SLASH,        KC_NO,
-                                                                              MY_LT2,             OSM(MOD_LSFT),                  OSM(MOD_LSFT),  MY_LT2
+                                                                              OSL2_STICKY,        OSM(MOD_LSFT),                  OSM(MOD_LSFT),  KC_SPACE
 
   ),
   [1] = LAYOUT_voyager(
@@ -34,7 +34,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TRA,            KC_COMMA,       KC_4,                 KC_5,               KC_6,               UK_PND,                         LGUI(KC_LEFT),  LALT(KC_LEFT),      KC_BSPC,      LALT(KC_RIGHT),      LGUI(KC_RIGHT),  TRA,     
     TRA,            KC_0,           MT(MOD_LGUI, KC_1),   MT(MOD_LSFT, KC_2), MT(MOD_RCTL, KC_3), KC_DLR,                         KC_LEFT,        KC_DOWN,            KC_UP,        KC_RIGHT,            KC_ENTER,        TRA,  
     TRA,            KC_DOT,         KC_7,                 KC_8,               KC_9,               KC_PERC,                        LALT(KC_BSPC),  KC_TAB,             RCTL(KC_TAB), KC_LEFT_GUI,         RCTL(KC_ENTER),  TRA,  
-                                                                              MY_LT2,             KC_LEFT_SHIFT,                  KC_ESCAPE,      MY_LT2    
+                                                                              OSL2_STICKY,        KC_LEFT_SHIFT,                  KC_ESCAPE,      KC_SPACE    
   ),
   [3] = LAYOUT_voyager(
     TRA,            TRA,            TRA,                  TRA,                TRA,                TRA,                            TRA,            TRA,                TRA,           TRA,                TRA,             TRA,  
@@ -227,8 +227,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case KC_DOT:
         case KC_COMMA:
         case UK_PND:
-        case KC_PERC:
-        case KC_DLR:
         case KC_LEFT_ALT:
         case MT(MOD_LGUI, KC_1):
         case MT(MOD_LSFT, KC_2):
