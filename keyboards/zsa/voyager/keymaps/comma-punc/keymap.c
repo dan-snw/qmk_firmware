@@ -197,10 +197,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 // Keep layer 2 on (already on from press)
               }
             } else {
-              // Hold: if not sticky, turn layer off on release
-              if (!layer2_sticky_active) {
-                layer_off(2);
-              }
+              // Hold: always act as momentary, clearing sticky state too
+              layer2_sticky_active = false;
+              layer_off(2);
             }
           }
           return false;
