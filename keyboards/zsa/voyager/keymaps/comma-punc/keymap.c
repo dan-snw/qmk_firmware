@@ -23,24 +23,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   ),
   [1] = LAYOUT_voyager(
-    TRA,            TRA,            TRA,                  TRA,                TRA,                TRA,                            TRA,            TRA,                TRA,         TRA,                  TRA,             TRA,  
-    TRA,            KC_PIPE,        KC_LABK,              KC_EQUAL,           KC_RABK,            KC_AMPR,                        KC_CIRC,        KC_RCBR,            KC_RPRN,     KC_RBRC,              KC_BSLS,         TRA,  
-    TRA,            KC_SCLN,        KC_COLN,              KC_QUES,            KC_EXLM,            KC_UNDS,                        TRA,            KC_LCBR,            KC_LPRN,     KC_LBRC,              RCTL(KC_RBRC),   TRA,  
-    TRA,            LALT(KC_3),     KC_AT,                KC_MINUS,           KC_GRAVE,           KC_PLUS,                        KC_ASTR,        RCTL(KC_GRAVE),     KC_COMMA,    TRA,                  KC_TILD,         TRA,  
+    TRA,            TRA,            TRA,                  TRA,                TRA,                TRA,                            TRA,            TRA,                TRA,         TRA,                  TRA,             TRA,
+    TRA,            KC_PIPE,        KC_LABK,              KC_EQUAL,           KC_RABK,            KC_AMPR,                        KC_CIRC,        KC_RCBR,            KC_RPRN,     KC_RBRC,              KC_BSLS,         TRA,
+    TRA,            KC_SCLN,        KC_COLN,              KC_QUES,            KC_EXLM,            KC_UNDS,                        TRA,            KC_LCBR,            KC_LPRN,     KC_LBRC,              RCTL(KC_RBRC),   TRA,
+    TRA,            LALT(KC_3),     KC_AT,                KC_MINUS,           KC_GRAVE,           KC_PLUS,                        KC_ASTR,        RCTL(KC_GRAVE),     KC_COMMA,    TRA,                  KC_TILD,         TRA,
                                                                               RCTL(KC_SPACE),     OSM(MOD_LGUI),                  OSM(MOD_RCTL),  ST_MACRO_0
   ),
   [2] = LAYOUT_voyager(
-    TRA,            TRA,            TRA,                  TRA,                TRA,                TRA,                            TRA,            TRA,                TRA,          TRA,                 TRA,             TRA,  
-    TRA,            KC_COMMA,       KC_4,                 KC_5,               KC_6,               UK_PND,                         LGUI(KC_LEFT),  LALT(KC_LEFT),      KC_BSPC,      LALT(KC_RIGHT),      LGUI(KC_RIGHT),  TRA,     
-    TRA,            KC_0,           MT(MOD_LGUI, KC_1),   MT(MOD_LSFT, KC_2), MT(MOD_RCTL, KC_3), KC_DLR,                         KC_LEFT,        KC_DOWN,            KC_UP,        KC_RIGHT,            KC_ENTER,        TRA,  
-    TRA,            KC_DOT,         KC_7,                 KC_8,               KC_9,               KC_PERC,                        LALT(KC_BSPC),  KC_TAB,             RCTL(KC_TAB), KC_LEFT_GUI,         RCTL(KC_ENTER),  TRA,  
-                                                                              OSL2_STICKY,        KC_LEFT_SHIFT,                  KC_ESCAPE,      KC_SPACE    
+    TRA,            TRA,            TRA,                  TRA,                TRA,                TRA,                            TRA,            TRA,                TRA,          TRA,                 TRA,             TRA,
+    TRA,            KC_COMMA,       KC_4,                 KC_5,               KC_6,               UK_PND,                         LGUI(KC_LEFT),  LALT(KC_LEFT),      KC_BSPC,      LALT(KC_RIGHT),      LGUI(KC_RIGHT),  TRA,
+    TRA,            KC_0,           MT(MOD_LGUI, KC_1),   MT(MOD_LSFT, KC_2), MT(MOD_RCTL, KC_3), KC_DLR,                         KC_LEFT,        KC_DOWN,            KC_UP,        KC_RIGHT,            KC_ENTER,        TRA,
+    TRA,            KC_DOT,         KC_7,                 KC_8,               KC_9,               KC_PERC,                        LALT(KC_BSPC),  KC_TAB,             RCTL(KC_TAB), KC_LEFT_GUI,         RCTL(KC_ENTER),  TRA,
+                                                                              OSL2_STICKY,        KC_LEFT_SHIFT,                  KC_ESCAPE,      KC_SPACE
   ),
   [3] = LAYOUT_voyager(
-    TRA,            TRA,            TRA,                  TRA,                TRA,                TRA,                            TRA,            TRA,                TRA,           TRA,                TRA,             TRA,  
-    TRA,            RCTL(KC_X),     LGUI(LSFT(RCTL(KC_4))),KC_BSPC,           KC_ENTER,           RCTL(KC_A),                     TRA,            TRA,                TRA,           TRA,                TRA,             TRA,  
-    TRA,            KC_LEFT_GUI,    KC_ESCAPE,            KC_LEFT_ALT,        MT(MOD_LSFT, KC_TAB),RCTL(KC_C),                    TRA,            TRA,                TRA,           TRA,                TRA,             TRA,  
-    TRA,            KC_DELETE,      KC_LEFT_SHIFT,        KC_LEFT_GUI,        LGUI(KC_TAB),       KC_V,                           TRA,            TRA,                TRA,           TRA,                TRA,             TRA,  
+    TRA,            TRA,            TRA,                  TRA,                TRA,                TRA,                            TRA,            TRA,                TRA,           TRA,                TRA,             TRA,
+    TRA,            RCTL(KC_X),     LGUI(LSFT(RCTL(KC_4))),KC_BSPC,           KC_ENTER,           RCTL(KC_A),                     TRA,            TRA,                TRA,           TRA,                TRA,             TRA,
+    TRA,            KC_LEFT_GUI,    KC_ESCAPE,            KC_LEFT_ALT,        MT(MOD_LSFT, KC_TAB),RCTL(KC_C),                    TRA,            TRA,                TRA,           TRA,                TRA,             TRA,
+    TRA,            KC_DELETE,      KC_LEFT_SHIFT,        KC_LEFT_GUI,        LGUI(KC_TAB),       KC_V,                           TRA,            TRA,                TRA,           TRA,                TRA,             TRA,
                                                                               TRA,                TRA,                            TRA,            TRA
   ),
 };
@@ -133,6 +133,8 @@ static bool osl2_clear_on_release = false;
 static bool layer2_sticky_active = false;
 static bool osl2_held = false;
 static uint16_t osl2_press_timer = 0;
+static uint8_t osl2_tap_count = 0;
+static uint16_t osl2_last_tap_timer = 0;
 static uint8_t lt2_count = 0;
 static bool lt2_tapping = false;
 static uint16_t lt2_tap_timer = 0;
@@ -178,28 +180,33 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case OSL2_STICKY:
           if (record->event.pressed) {
-            // On press: always turn Layer 2 on and mark held
+            if (osl2_tap_count > 0 && timer_elapsed(osl2_last_tap_timer) > TAPPING_TERM) {
+              osl2_tap_count = 0;
+            }
             osl2_held = true;
             osl2_press_timer = timer_read();
             layer_on(2);
-          }
-          else {
-            // On release: decide tap vs hold by time
+          } else {
             osl2_held = false;
             uint16_t elapsed = timer_elapsed(osl2_press_timer);
-            if (elapsed < TAPPING_TERM) {
-              // Tap: toggle sticky
-              if (layer2_sticky_active) {
-                layer2_sticky_active = false;
-                layer_off(2);
-              } else {
-                layer2_sticky_active = true;
-                // Keep layer 2 on (already on from press)
-              }
-            } else {
-              // Hold: always act as momentary, clearing sticky state too
+            if (elapsed >= TAPPING_TERM) {
               layer2_sticky_active = false;
               layer_off(2);
+              osl2_tap_count = 0;
+            } else {
+              osl2_tap_count++;
+              osl2_last_tap_timer = timer_read();
+              if (osl2_tap_count >= 2) {
+                layer2_sticky_active = !layer2_sticky_active;
+                if (!layer2_sticky_active) {
+                  layer_off(2);
+                }
+                osl2_tap_count = 0;
+              } else {
+                if (!layer2_sticky_active) {
+                  layer_off(2);
+                }
+              }
             }
           }
           return false;
